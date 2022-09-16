@@ -29,11 +29,21 @@ public class Order {
 
     private LocalDateTime orderFinTime;
 
+    //연관관계
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Order(String s, LocalDateTime now, boolean b) {
+    public void setUser(User user) {
+        this.user = user;
+        user.getOrderList().add(this);
+    }
+
+    public Order(String s, LocalDateTime now, boolean b, User user) {
         this.serialNumber = s;
         this.orderTime = now;
         this.orderStatus = b;
+        this.setUser(user);
     }
 
 }
