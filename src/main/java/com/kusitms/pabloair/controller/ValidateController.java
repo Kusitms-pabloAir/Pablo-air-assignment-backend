@@ -1,5 +1,7 @@
 package com.kusitms.pabloair.controller;
 
+import com.kusitms.pabloair.HeaderUtil;
+import com.kusitms.pabloair.security.JwtTokenProvider;
 import com.kusitms.pabloair.dto.ValidateRequestDto;
 import com.kusitms.pabloair.response.DefaultRes;
 import com.kusitms.pabloair.response.ResponseMessage;
@@ -12,15 +14,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequiredArgsConstructor
 public class ValidateController {
 
     private final ValidateService validateService;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @GetMapping("/validate")
-    public ResponseEntity validate(@RequestBody ValidateRequestDto requestDto) {
-        boolean validate = validateService.validate(requestDto.getSerialNumber());
+    public ResponseEntity validate(HttpServletRequest request, @RequestBody ValidateRequestDto requestDto) {
+
+        String accessToken = HeaderUtil.getAccessToken(request);
+        Long userId = jwtTokenProvider.getPayload(accessToken);
+
+        boolean validate = validateService.validate(userId, requestDto.getSerialNumber());
+
+        System.out.println(">>>>>>>>>>>>>>>>" + userId);
 
         if(validate == true)
             return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.VALIDATE_SUCCESS), HttpStatus.OK);

@@ -11,7 +11,7 @@ public class ValidateService {
 
     private final ValidateRepository validateRepository;
 
-    public boolean validate(String serialNumber) {
+    public boolean validate(Long userid, String serialNumber) {
         Order order = validateRepository.validate(serialNumber);
         if (order == null)
             return false;
