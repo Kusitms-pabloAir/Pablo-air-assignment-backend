@@ -17,8 +17,8 @@ public class UserController {
 
 
     @GetMapping("/login/oauth/{provider}")
-    public ResponseEntity<LoginResponse> login(@PathVariable String provider, @RequestBody UserToken userToken) {
-        LoginResponse loginResponse = oauthService.loginWithToken(provider, userToken);
+    public ResponseEntity<LoginResponse> login(@PathVariable String provider, @RequestParam String accessToken) {
+        LoginResponse loginResponse = oauthService.loginWithToken(provider, accessToken);
         return ResponseEntity.ok().body(loginResponse);
     }
 

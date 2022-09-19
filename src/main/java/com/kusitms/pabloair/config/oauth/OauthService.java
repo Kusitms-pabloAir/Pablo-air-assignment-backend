@@ -25,24 +25,24 @@ public class OauthService {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
-    public LoginResponse loginWithToken(String providerName, UserToken userToken) {
+    public LoginResponse loginWithToken(String providerName, String userToken) {
         User user = getUserProfileByToken(providerName, userToken);
         String accessToken = jwtTokenProvider.createAccessToken(String.valueOf(user.getId()), user.getRoles());
         String refreshToken = jwtTokenProvider.createRefreshToken(user.getRoles());
         return new LoginResponse(user, accessToken, refreshToken);
     }
 
-    private Map<String, Object> getUserAttributesByToken(UserToken userToken){
+    private Map<String, Object> getUserAttributesByToken(String userToken){
         return WebClient.create()
                 .get()
                 .uri("https://kapi.kakao.com/v2/user/me")
-                .headers(httpHeaders -> httpHeaders.setBearerAuth(userToken.getAccessToken()))
+                .headers(httpHeaders -> httpHeaders.setBearerAuth(userToken))
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<Map<String, Object>>() {})
                 .block();
     }
 
-    private User getUserProfileByToken(String providerName, UserToken userToken){
+    private User getUserProfileByToken(String providerName, String userToken){
         if(!providerName.equals("kakao")){
             throw new IllegalArgumentException("잘못된 접근입니다.");
         }
