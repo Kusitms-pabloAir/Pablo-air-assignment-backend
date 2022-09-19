@@ -18,9 +18,6 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
-    @Column(name = "order_sn", nullable = false)
-    private String serialNumber;
-
     @Column(nullable = false)
     private LocalDateTime orderTime;
 
@@ -40,7 +37,6 @@ public class Order {
     }
 
     public Order(String s, LocalDateTime now, boolean b, User user) {
-        this.serialNumber = s;
         this.orderTime = now;
         this.orderStatus = b;
         this.setUser(user);

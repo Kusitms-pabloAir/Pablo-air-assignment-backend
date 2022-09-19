@@ -29,9 +29,10 @@ public class ValidateController {
         String accessToken = HeaderUtil.getAccessToken(request);
         Long userId = jwtTokenProvider.getPayload(accessToken);
 
+        System.out.println(">>>>>userId>>>>>>>>>>>>>" + userId);
+
         boolean validate = validateService.validate(userId, requestDto.getSerialNumber());
 
-        System.out.println(">>>>>>>>>>>>>>>>" + userId);
 
         if(validate == true)
             return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.VALIDATE_SUCCESS), HttpStatus.OK);
@@ -39,4 +40,13 @@ public class ValidateController {
             return new ResponseEntity(DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessage.VALIDATE_ERROR), HttpStatus.BAD_REQUEST);
     }
 
+    @GetMapping("/serialNumber")
+    private ResponseEntity getSerialNumber(HttpServletRequest request) {
+        String accessToken = HeaderUtil.getAccessToken(request);
+        Long userId = jwtTokenProvider.getPayload(accessToken);
+
+        String serialNumber = validateService.getSerialNumber(userId);
+
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.SERIAL_NUMBER_SUCCRSS, serialNumber), HttpStatus.OK);
+    }
 }

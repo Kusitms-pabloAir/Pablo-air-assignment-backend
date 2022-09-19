@@ -56,12 +56,13 @@ public class OauthService {
         Long kakao_id = kakaoUserInfo.getId();
         String name = kakaoUserInfo.getName();
         String nickName = kakaoUserInfo.getNickName();
+        String email = kakaoUserInfo.getEmail();
 
         if(userRepository.findById(kakao_id).isPresent()){
             throw new IllegalStateException();  //중복회원 예외
         }
 
-        User user = new User(kakao_id, name, nickName, userToken.getAccessToken(), userToken.getRefreshToken(), Collections.singletonList("ROLE_USER") );
+        User user = new User(kakao_id, name, nickName, email, Collections.singletonList("ROLE_USER") );
         User save = userRepository.save(user);
         return save;
     }
