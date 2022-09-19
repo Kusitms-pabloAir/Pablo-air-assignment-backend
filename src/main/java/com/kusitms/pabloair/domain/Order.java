@@ -1,6 +1,6 @@
 package com.kusitms.pabloair.domain;
 
-import com.kusitms.pabloair.BooleanConverter;
+import com.kusitms.pabloair.config.BooleanConverter;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

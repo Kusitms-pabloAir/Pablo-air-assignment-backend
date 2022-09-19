@@ -1,12 +1,10 @@
-package com.kusitms.pabloair.security.oauth;
+package com.kusitms.pabloair.config.oauth;
 
-import com.kusitms.pabloair.domain.Role;
 import com.kusitms.pabloair.domain.User;
 import com.kusitms.pabloair.dto.LoginResponse;
 import com.kusitms.pabloair.dto.UserToken;
 import com.kusitms.pabloair.repository.UserRepository;
-import com.kusitms.pabloair.security.JwtTokenProvider;
-import com.kusitms.pabloair.security.oauth.KakaoUserInfo;
+import com.kusitms.pabloair.config.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;

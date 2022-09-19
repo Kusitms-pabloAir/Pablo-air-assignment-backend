@@ -1,4 +1,4 @@
-package com.kusitms.pabloair.security.oauth;
+package com.kusitms.pabloair.config.oauth;
 
 import java.util.Map;
 

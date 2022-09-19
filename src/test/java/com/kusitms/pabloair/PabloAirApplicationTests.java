@@ -1,6 +1,6 @@
 package com.kusitms.pabloair;
 
-import com.kusitms.pabloair.security.JwtTokenProvider;
+import com.kusitms.pabloair.config.JwtTokenProvider;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

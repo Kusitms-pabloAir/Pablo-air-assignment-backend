@@ -24,7 +24,6 @@ public class ValidateService {
     public boolean validate(Long userid, String serialNumber) {
         Order order = validateRepository.validate(userid, serialNumber);
 
-        System.out.println(">>>>>>>>>order>>>>>>>" + order.getId());
         if (order == null)
             return false;
         else {

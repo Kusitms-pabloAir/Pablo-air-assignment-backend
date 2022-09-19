@@ -1,7 +1,7 @@
 package com.kusitms.pabloair.controller;
 
-import com.kusitms.pabloair.HeaderUtil;
-import com.kusitms.pabloair.security.JwtTokenProvider;
+import com.kusitms.pabloair.response.HeaderUtil;
+import com.kusitms.pabloair.config.JwtTokenProvider;
 import com.kusitms.pabloair.dto.ValidateRequestDto;
 import com.kusitms.pabloair.response.DefaultRes;
 import com.kusitms.pabloair.response.ResponseMessage;

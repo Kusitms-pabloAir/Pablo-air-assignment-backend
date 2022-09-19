@@ -1,4 +1,4 @@
-package com.kusitms.pabloair;
+package com.kusitms.pabloair.response;
 
 import javax.servlet.http.HttpServletRequest;
 
