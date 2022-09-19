@@ -1,6 +1,6 @@
 package com.kusitms.pabloair.domain;
 
-import com.kusitms.pabloair.BooleanConverter;
+import com.kusitms.pabloair.config.BooleanConverter;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +18,6 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
-    @Column(name = "order_sn", nullable = false)
-    private String serialNumber;
-
     @Column(nullable = false)
     private LocalDateTime orderTime;
 
@@ -29,11 +26,20 @@ public class Order {
 
     private LocalDateTime orderFinTime;
 
+    //연관관계
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Order(String s, LocalDateTime now, boolean b) {
-        this.serialNumber = s;
+    public void setUser(User user) {
+        this.user = user;
+        user.getOrderList().add(this);
+    }
+
+    public Order(String s, LocalDateTime now, boolean b, User user) {
         this.orderTime = now;
         this.orderStatus = b;
+        this.setUser(user);
     }
 
 }

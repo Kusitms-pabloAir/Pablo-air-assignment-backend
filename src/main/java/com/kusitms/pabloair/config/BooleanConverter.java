@@ -1,4 +1,4 @@
-package com.kusitms.pabloair;
+package com.kusitms.pabloair.config;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

@@ -41,6 +41,7 @@ gen
 /dataSources.local.xml
 # application-prod.yml
 application-prod.yml
+**/application-kakao.yml
 
 ### Gradle template
 .gradle
