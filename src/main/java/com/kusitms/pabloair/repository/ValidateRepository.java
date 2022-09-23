@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 
 public interface ValidateRepository extends JpaRepository<Order, Long> {
 
+    /*
     @Query(value = "select * from orders o, user u " +
             "where o.user_id = o.user_id " +
             "and o.order_status = 'False' " +
@@ -18,11 +19,12 @@ public interface ValidateRepository extends JpaRepository<Order, Long> {
             "and o.user_id = :userId"
           , nativeQuery = true)
     Order validate(@Param("userId") Long userId, @Param("sn") String serialNumber);
+     */
 
     @Transactional
     @Modifying
     @Query(value = "update orders o set o.order_status = 'True', o.order_fin_time = now() " +
-            "where o.order_id = :id", nativeQuery = true)
+            "where o.user_id = :id and o.order_status = 'False'", nativeQuery = true)
     void update(@Param("id") Long id);
 
 }

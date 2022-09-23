@@ -25,14 +25,8 @@ public class ValidateController {
     private final JwtTokenProvider jwtTokenProvider;
 
     @GetMapping("/validate")
-    public ResponseEntity validate(HttpServletRequest request, @RequestParam String serialNumber) {
-
-        String accessToken = HeaderUtil.getAccessToken(request);
-        Long userId = jwtTokenProvider.getPayload(accessToken);
-
-        System.out.println(">>>>>userId>>>>>>>>>>>>>" + userId);
-
-        boolean validate = validateService.validate(userId, serialNumber);
+    public ResponseEntity validate(@RequestParam String serialNumber) {
+        boolean validate = validateService.validate(serialNumber);
 
 
         if(validate == true)
@@ -45,6 +39,8 @@ public class ValidateController {
     private ResponseEntity getSerialNumber(HttpServletRequest request) {
         String accessToken = HeaderUtil.getAccessToken(request);
         Long userId = jwtTokenProvider.getPayload(accessToken);
+
+        //System.out.println(">>>>>userId>>>>>>>>>>>>>" + userId);
 
         String serialNumber = validateService.getSerialNumber(userId);
 
