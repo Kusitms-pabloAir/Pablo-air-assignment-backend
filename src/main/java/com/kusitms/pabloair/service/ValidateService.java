@@ -21,13 +21,13 @@ public class ValidateService {
     private final ValidateRepository validateRepository;
     private final UserRepository userRepository;
 
-    public boolean validate(Long userid, String serialNumber) {
-        Order order = validateRepository.validate(userid, serialNumber);
+    public boolean validate(String serialNumber) {
+        User user = userRepository.findBySerialNumber(serialNumber);
 
-        if (order == null)
+        if (user == null)
             return false;
         else {
-            validateRepository.update(order.getId());
+            validateRepository.update(user.getId());
             return true;
         }
     }
