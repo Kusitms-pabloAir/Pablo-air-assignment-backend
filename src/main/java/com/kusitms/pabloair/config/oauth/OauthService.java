@@ -2,7 +2,6 @@ package com.kusitms.pabloair.config.oauth;
 
 import com.kusitms.pabloair.domain.User;
 import com.kusitms.pabloair.dto.LoginResponse;
-import com.kusitms.pabloair.dto.UserToken;
 import com.kusitms.pabloair.repository.UserRepository;
 import com.kusitms.pabloair.config.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -54,13 +53,12 @@ public class OauthService {
         Long kakao_id = kakaoUserInfo.getId();
         String name = kakaoUserInfo.getName();
         String nickName = kakaoUserInfo.getNickName();
-        String email = kakaoUserInfo.getEmail();
 
         if(userRepository.findById(kakao_id).isPresent()){
             throw new IllegalStateException();  //중복회원 예외
         }
 
-        User user = new User(kakao_id, name, nickName, email, Collections.singletonList("ROLE_USER") );
+        User user = new User(kakao_id, name, nickName, Collections.singletonList("ROLE_USER") );
         User save = userRepository.save(user);
         return save;
     }
