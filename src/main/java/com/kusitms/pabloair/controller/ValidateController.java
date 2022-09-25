@@ -2,7 +2,6 @@ package com.kusitms.pabloair.controller;
 
 import com.kusitms.pabloair.response.HeaderUtil;
 import com.kusitms.pabloair.config.JwtTokenProvider;
-import com.kusitms.pabloair.dto.ValidateRequestDto;
 import com.kusitms.pabloair.response.DefaultRes;
 import com.kusitms.pabloair.response.ResponseMessage;
 import com.kusitms.pabloair.response.StatusCode;
@@ -11,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,8 +37,6 @@ public class ValidateController {
     private ResponseEntity getSerialNumber(HttpServletRequest request) {
         String accessToken = HeaderUtil.getAccessToken(request);
         Long userId = jwtTokenProvider.getPayload(accessToken);
-
-        //System.out.println(">>>>>userId>>>>>>>>>>>>>" + userId);
 
         String serialNumber = validateService.getSerialNumber(userId);
 

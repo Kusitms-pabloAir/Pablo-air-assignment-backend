@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserToken {
-    private String accessToken;
+public class ItemDto {
+    private Long id;
+    private String name;
+    private int price;
 }
