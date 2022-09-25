@@ -1,11 +1,16 @@
 package com.kusitms.pabloair.config;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
+@Component
+@RequiredArgsConstructor
 public class AES256Util {
 
     public static String alg = "AES/CBC/PKCS5Padding";
