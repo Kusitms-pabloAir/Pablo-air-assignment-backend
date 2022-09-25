@@ -13,4 +13,6 @@ public class ResponseMessage {
     public static final String VALIDATE_SUCCESS = "인증 성공";
     public static final String VALIDATE_ERROR = "인증 실패";
     public static final String SERIAL_NUMBER_SUCCESS = "시리얼 넘버 생성 성공";
+    public static final String ORDER_SUCCESS = "주문 성공";
+    public static final String GET_SUCCESS = "조회 성공";
 }

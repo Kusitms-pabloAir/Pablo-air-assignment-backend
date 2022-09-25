@@ -38,8 +38,6 @@ public class ValidateController {
         String accessToken = HeaderUtil.getAccessToken(request);
         Long userId = jwtTokenProvider.getPayload(accessToken);
 
-        //System.out.println(">>>>>userId>>>>>>>>>>>>>" + userId);
-
         String serialNumber = validateService.getSerialNumber(userId);
 
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.SERIAL_NUMBER_SUCCESS, serialNumber), HttpStatus.OK);
