@@ -31,6 +31,9 @@ public class Order {
 
     private String storeName;
 
+    private String serialNumber;
+
+
     //연관관계
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -51,7 +54,7 @@ public class Order {
    }
 
    //생성 메서드
-    public static Order createOrder(User user, String storeName, List<OrderItem> orderItems) {
+    public static Order createOrder(User user, String storeName, List<OrderItem> orderItems, String serialNumber) {
         Order order = new Order();
         order.setUser(user);
         for(OrderItem orderItem : orderItems) {
@@ -60,6 +63,7 @@ public class Order {
         order.setOrderTime(LocalDateTime.now());
         order.setOrderStatus(false);
         order.setStoreName(storeName);
+        order.setSerialNumber(serialNumber);
 
         return order;
     }

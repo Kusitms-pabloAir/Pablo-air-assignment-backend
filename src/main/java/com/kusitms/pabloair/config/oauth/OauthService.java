@@ -1,16 +1,20 @@
 package com.kusitms.pabloair.config.oauth;
 
+import com.kusitms.pabloair.config.AES256Util;
 import com.kusitms.pabloair.domain.User;
 import com.kusitms.pabloair.dto.LoginResponse;
 import com.kusitms.pabloair.repository.UserRepository;
 import com.kusitms.pabloair.config.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Map;
 
@@ -62,5 +66,4 @@ public class OauthService {
         User save = userRepository.save(user);
         return save;
     }
-
 }
