@@ -25,7 +25,6 @@ public class User implements UserDetails {
     private Long kakaoId;
     private String name;
     private String nickName;
-    private String serialNumber;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
