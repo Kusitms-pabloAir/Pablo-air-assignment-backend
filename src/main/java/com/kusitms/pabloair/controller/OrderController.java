@@ -49,7 +49,7 @@ public class OrderController {
     }
 
     //검증
-    @GetMapping("/order/validate")
+    @PostMapping("/order/validate")
     public ResponseEntity validateSerialNumber(@RequestBody SerialNumberDto serialNumber) {
         boolean validate = orderService.validateSerialNumber(serialNumber.getSerialNumber());
 
