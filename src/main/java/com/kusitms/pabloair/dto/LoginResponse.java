@@ -25,6 +25,5 @@ public class LoginResponse {
         this.role = user.getRoles();
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
-
     }
 }

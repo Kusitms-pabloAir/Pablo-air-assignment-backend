@@ -1,7 +1,6 @@
 package com.kusitms.pabloair.controller;
 
 import com.kusitms.pabloair.dto.LoginResponse;
-import com.kusitms.pabloair.dto.UserToken;
 import com.kusitms.pabloair.config.oauth.OauthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

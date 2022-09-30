@@ -25,8 +25,6 @@ public class User implements UserDetails {
     private Long kakaoId;
     private String name;
     private String nickName;
-    private String accountEmail;
-    private String serialNumber;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
@@ -36,11 +34,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Order> orderList = new ArrayList<>();
 
-    public User(Long kakao_id, String name, String nickName, String accountEmail, List<String> role){
+    public User(Long kakao_id, String name, String nickName, List<String> role){
         this.kakaoId = kakao_id;
         this.name = name;
         this.nickName = nickName;
-        this.accountEmail = accountEmail;
         this.roles = role;
     }
 

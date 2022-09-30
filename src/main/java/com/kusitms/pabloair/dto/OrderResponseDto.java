@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ValidateRequestDto {
-    private String serialNumber;
+public class OrderResponseDto {
+    private Long order_id;
+    private boolean order_status;
+    private String storeName;
 }
